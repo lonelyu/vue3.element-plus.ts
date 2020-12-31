@@ -16,6 +16,22 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import marked from "marked";
+import hljs from "highlight.js";
+
+marked.setOptions({
+  renderer: marked.Renderer(),
+  highlight: function(code: string) {
+    return hljs.highlightAuto(code).value;
+  },
+  pedantic: false,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false
+});
 
 export default defineComponent({
   name: "Home",
