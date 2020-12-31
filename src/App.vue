@@ -2,6 +2,7 @@
   <router-view />
 </template>
 
+<style src="./assets/alice.css"></style>
 <style lang="scss">
 html,
 body {

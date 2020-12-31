@@ -1,37 +1,24 @@
 <template>
   <el-container class="container">
-    <el-header class="">
+    <el-header>
       <el-menu
+        router
         :default-active="activeIndex2"
-        class="el-menu-demo"
         mode="horizontal"
         @select="handleSelect"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="1">处理中心</el-menu-item>
-        <el-submenu index="2">
-          <template #title>我的工作台</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-          <el-menu-item index="2-3">选项3</el-menu-item>
-          <el-submenu index="2-4">
-            <template #title>选项4</template>
-            <el-menu-item index="2-4-1">选项1</el-menu-item>
-            <el-menu-item index="2-4-2">选项2</el-menu-item>
-            <el-menu-item index="2-4-3">选项3</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-menu-item index="3" disabled>消息中心</el-menu-item>
-        <el-menu-item index="4"
-          ><a href="https://www.ele.me" target="_blank"
-            >订单管理</a
-          ></el-menu-item
+        <el-menu-item index="1" :route="{ name: 'demos-index' }"
+          >组件代码</el-menu-item
+        >
+        <el-menu-item index="2" :route="{ name: 'markdown-index' }"
+          >markdown文档</el-menu-item
         >
       </el-menu>
     </el-header>
-    <el-container>
+    <el-container class="container-con">
       <el-aside>
         <el-menu
           :uniqueOpened="true"
@@ -90,9 +77,7 @@
         </el-menu>
       </el-aside>
       <el-main>
-        <div class="home">
-          <router-view />
-        </div>
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
@@ -125,9 +110,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $aside-h: 200px;
+.container {
+  height: 100%;
+  padding-top: 60px;
+  position: relative;
+  .container-con {
+    height: 100%;
+    overflow: auto;
+  }
+}
 .el-header {
+  width: 100%;
   padding: 0 0 0 $aside-h;
   background-color: #545c64;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .el-aside {
   width: $aside-h !important;
@@ -136,7 +134,5 @@ $aside-h: 200px;
 .el-menu {
   border: 0;
 }
-.container {
-  height: 100%;
-}
 </style>
+<style lang="scss" src="./scss/markdown.scss" />

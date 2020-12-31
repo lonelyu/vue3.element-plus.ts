@@ -1,27 +1,23 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
+import demosRoute from './routers/demos';
+import markdownRoute from './routers/markdown';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    redirect: "/demos",
     component: () => import("@/views/Layout.vue"),
     children: [
-      {
-        path: "/",
-        name: "index",
-        component: () => import("@/views/Index.vue"),
-      },
-      {
-        path: "/about",
-        name: "about",
-        component: () => import("@/views/About.vue"),
-      }
-    ]
+      ...demosRoute,
+      ...markdownRoute
+    ],
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
