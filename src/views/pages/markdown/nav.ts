@@ -59,6 +59,92 @@ export default [
         name: 'markdown-es6',
         query: { fileId: 'object' }
       },
+      {
+        label: 'Symbol',
+        name: 'markdown-es6',
+        query: { fileId: 'symbol' }
+      },
+      {
+        label: 'Set 和 Map 数据结构',
+        name: 'markdown-es6',
+        query: { fileId: 'set-map' }
+      },
+      {
+        label: 'Proxy',
+        name: 'markdown-es6',
+        query: { fileId: 'proxy' }
+      },
+      {
+        label: 'Reflect',
+        name: 'markdown-es6',
+        query: { fileId: 'reflect' }
+      },
+      {
+        label: 'Promise 对象',
+        name: 'markdown-es6',
+        query: { fileId: 'promise' }
+      },
+      {
+        label: 'Iterator 和 for...of 循环',
+        name: 'markdown-es6',
+        query: { fileId: 'iterator' }
+      },
+      {
+        label: 'Generator 函数的语法',
+        name: 'markdown-es6',
+        query: { fileId: 'generator' }
+      },
+      {
+        label: 'Generator 函数的异步应用',
+        name: 'markdown-es6',
+        query: { fileId: 'generator-async' }
+      },
+      {
+        label: 'async 函数',
+        name: 'markdown-es6',
+        query: { fileId: 'async' }
+      },
+      {
+        label: 'Class 的基本语法',
+        name: 'markdown-es6',
+        query: { fileId: 'class' }
+      },
+      {
+        label: 'Class 的继承',
+        name: 'markdown-es6',
+        query: { fileId: 'class-extends' }
+      },
+      {
+        label: 'Decorator',
+        name: 'markdown-es6',
+        query: { fileId: 'decorator' }
+      },
+      {
+        label: 'Module 的语法',
+        name: 'markdown-es6',
+        query: { fileId: 'module' }
+      },
+      {
+        label: 'Module 的加载实现',
+        name: 'markdown-es6',
+        query: { fileId: 'module-loader' }
+      },
+      {
+        label: '编程风格',
+        name: 'markdown-es6',
+        query: { fileId: 'style' }
+      },
+      {
+        label: '读懂规格',
+        name: 'markdown-es6',
+        query: { fileId: 'spec' }
+      },
+      {
+        label: 'ArrayBuffer',
+        name: 'markdown-es6',
+        query: { fileId: 'arraybuffer' }
+      },
+
     ]
   }
 ]
