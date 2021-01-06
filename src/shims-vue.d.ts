@@ -4,5 +4,5 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-declare module 'marked'
-declare module 'prismjs'
+declare module 'marked';
+declare module 'prismjs';
