@@ -10,9 +10,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+const Axios = axios.create({
+  baseURL: 'http://127.0.0.1:9997',
+});
+
 const app = createApp(App)
   .use(ElementPlus)
   .use(store)
   .use(router)
-  .use(VueAxios, axios)
+  .use(VueAxios, Axios)
   .mount("#app");

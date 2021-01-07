@@ -24,26 +24,24 @@ export default defineComponent({
         const fileId: string = route.query.fileId;
         if (fileId) {
           this.loading = true;
-          this.$http
-            .get(`http://127.0.0.1:9997/assets/books/es6/${fileId}.md`)
-            .then(response => {
-              this.valHtml = marked(response.data);
-              this.$nextTick(() => {
-                const nodes: NodeListOf<HTMLElement> = document.querySelectorAll(
-                  "#content pre code"
-                );
-                nodes.forEach(
-                  (item: { innerHTML: string; innerText: string }) => {
-                    item.innerHTML = Prism.highlight(
-                      item.innerText,
-                      Prism.languages.javascript,
-                      "javascript"
-                    );
-                  }
-                );
-                this.loading = false;
-              });
+          this.$http.get(`/assets/books/es6/${fileId}.md`).then(response => {
+            this.valHtml = marked(response.data);
+            this.$nextTick(() => {
+              const nodes: NodeListOf<HTMLElement> = document.querySelectorAll(
+                "#content pre code"
+              );
+              nodes.forEach(
+                (item: { innerHTML: string; innerText: string }) => {
+                  item.innerHTML = Prism.highlight(
+                    item.innerText,
+                    Prism.languages.javascript,
+                    "javascript"
+                  );
+                }
+              );
+              this.loading = false;
             });
+          });
         }
       },
       immediate: true
