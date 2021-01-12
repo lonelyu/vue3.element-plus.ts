@@ -11,7 +11,7 @@ import router from "./router";
 import store from "./store";
 
 const Axios = axios.create({
-  baseURL: 'http://127.0.0.1:9997',
+  baseURL: 'http://127.0.0.1:9999',
 });
 
 const app = createApp(App)
