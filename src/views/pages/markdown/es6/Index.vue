@@ -25,7 +25,7 @@ export default defineComponent({
         if (fileId) {
           this.loading = true;
           this.$http.get(`/assets/books/es6/${fileId}.md`).then(response => {
-            this.valHtml = marked(response.data);
+            this.valHtml = marked(response);
             this.$nextTick(() => {
               const nodes: NodeListOf<HTMLElement> = document.querySelectorAll(
                 "#content pre code"

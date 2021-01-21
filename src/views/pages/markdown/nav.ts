@@ -1,19 +1,13 @@
 export default [
   {
-    label:'其他',
     icon: 'el-icon-location',
-    children:[
-      {
-        label: '首页',
-        name: 'markdown-index',
-        query: {}
-      }
-    ]
+    label: '首页',
+    name: 'markdown-index',
   },
   {
-    label:'ECMA Script6',
-    icon: 'el-icon-location',
-    children:[
+    label: 'ECMA Script6',
+    icon: 'el-icon-menu',
+    children: [
       {
         label: 'ECMAScript 6简介',
         name: 'markdown-es6',

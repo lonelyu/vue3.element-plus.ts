@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>这是首页</h1>
+    <h1>{{ hello }}</h1>
   </div>
 </template>
 
@@ -8,6 +8,16 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      hello: ""
+    };
+  },
+  created() {
+    this.$http.get("/demo").then(res => {
+      this.hello = res.data;
+    });
+  }
 });
 </script>

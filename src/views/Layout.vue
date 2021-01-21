@@ -22,32 +22,37 @@
       <el-aside>
         <el-menu
           router
-          :uniqueOpened="true"
           class="el-menu-vertical-demo"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
         >
           <div v-show="activeHeader === 'markdown'">
-            <el-submenu
-              v-for="(item1, index1) in markdownList"
-              :key="index1"
-              index="activeIndex"
-            >
-              <template #title>
+            <template v-for="(item1, index1) in markdownList" :key="index1">
+              <el-menu-item
+                v-if="item1.name"
+                :index="item1.name + index1"
+                :route="{ name: item1.name }"
+              >
                 <i :class="item1.icon"></i>
-                <span>{{ item1.label }}</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item
-                  v-for="(item2, index2) in item1.children"
-                  :key="index2"
-                  :index="item2.name + index2"
-                  :route="{ name: item2.name, query: item2.query }"
-                  >{{ item2.label }}</el-menu-item
-                >
-              </el-menu-item-group>
-            </el-submenu>
+                <template #title>{{ item1.label }}</template>
+              </el-menu-item>
+              <el-submenu v-else index="activeIndex">
+                <template #title>
+                  <i :class="item1.icon"></i>
+                  <span>{{ item1.label }}</span>
+                </template>
+                <el-menu-item-group>
+                  <el-menu-item
+                    v-for="(item2, index2) in item1.children"
+                    :key="index2"
+                    :index="item2.name + index2"
+                    :route="{ name: item2.name, query: item2.query }"
+                    >{{ item2.label }}</el-menu-item
+                  >
+                </el-menu-item-group>
+              </el-submenu>
+            </template>
           </div>
         </el-menu>
       </el-aside>
@@ -73,7 +78,6 @@ export default defineComponent({
   },
   methods: {
     headerSelect(i: string) {
-      console.log(i);
       this.activeHeader = i;
     }
   }
