@@ -1,6 +1,16 @@
 <template>
   <div>
-    <h1>{{ hello }}</h1>
+    <h3>本机mysql一些操作:9999端口</h3>
+    <el-form :model="form" ref="form" label-width="100px">
+      <el-form-item label="活动名称" prop="content">
+        <el-input v-model="form.content"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('form')"
+          >立即创建</el-button
+        >
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -11,13 +21,30 @@ export default defineComponent({
   name: "Home",
   data() {
     return {
-      hello: ""
+      form: {
+        content: ""
+      }
     };
   },
-  created() {
-    this.$http.get("/demo").then(res => {
-      this.hello = res.data;
-    });
+  methods: {
+    submitForm(formName: string) {
+      const form: any = this.$refs;
+      form[formName].validate((valid: boolean) => {
+        if (valid) {
+          this.$http
+            .post("/add", {
+              tableName: "json_data",
+              data: this.form
+            })
+            .then(res => {
+              alert(res.data);
+            });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    }
   }
 });
 </script>
