@@ -5,31 +5,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, watch } from "vue";
+import { route } from "vue-router";
+import request from "@/request";
 
 import marked from "marked";
 import Prism from "prismjs";
 
 export default defineComponent({
   name: "Home",
-  data() {
-    return {
+  setup() {
+    const vData = reactive({
       valHtml: "",
       loading: true
-    };
-  },
-  watch: {
-    $route: {
+    });
+
+    const watchRouter = watch(route, {
       handler(route) {
         const fileId: string = route.query.fileId;
         if (fileId) {
-          this.loading = true;
-          this.$http.get(`/assets/books/es6/${fileId}.md`).then(response => {
-            this.valHtml = marked(response);
+          vData.loading = true;
+          request.get(`/assets/books/es6/${fileId}.md`).then(response => {
+            vData.valHtml = marked(response);
             this.$nextTick(() => {
-              const nodes: NodeListOf<HTMLElement> = document.querySelectorAll(
+              const nodes = document.querySelectorAll(
                 "#content pre code"
-              );
+              ) as NodeListOf<HTMLElement>;
               nodes.forEach(
                 (item: { innerHTML: string; innerText: string }) => {
                   item.innerHTML = Prism.highlight(
@@ -39,13 +40,18 @@ export default defineComponent({
                   );
                 }
               );
-              this.loading = false;
+              vData.loading = false;
             });
           });
         }
       },
       immediate: true
-    }
+    });
+
+    return {
+      watchRouter,
+      vData
+    };
   }
 });
 </script>

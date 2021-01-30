@@ -1,7 +1,7 @@
 export default [
   {
     icon: 'el-icon-location',
-    label: '首页',
+    label: 'markdown首页',
     name: 'markdown-index',
   },
   {
@@ -139,6 +139,17 @@ export default [
         query: { fileId: 'arraybuffer' }
       },
 
+    ]
+  },
+  {
+    label: 'VUE2.x-3.x',
+    icon: 'el-icon-menu',
+    children: [
+      {
+        label: '重大变化',
+        name: 'markdown-es6',
+        query: { fileId: '重大变化' }
+      },
     ]
   }
 ]

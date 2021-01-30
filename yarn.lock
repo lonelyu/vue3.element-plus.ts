@@ -5551,7 +5551,7 @@ lodash.uniq@^4.5.0:
 
 lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.3:
   version "4.17.20"
-  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.20.tgz?cache=0&sync_timestamp=1604053732252&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
 
 log-symbols@^2.2.0:
@@ -8685,11 +8685,6 @@ vue-axios@^3.2.0:
   version "3.2.0"
   resolved "https://registry.npm.taobao.org/vue-axios/download/vue-axios-3.2.0.tgz#43843cbc9108e807007189ad80cd1ba48a0ad951"
   integrity sha1-Q4Q8vJEI6AcAcYmtgM0bpIoK2VE=
-
-vue-class-component@^7.2.6:
-  version "7.2.6"
-  resolved "https://registry.npm.taobao.org/vue-class-component/download/vue-class-component-7.2.6.tgz?cache=0&sync_timestamp=1605840248014&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-class-component%2Fdownload%2Fvue-class-component-7.2.6.tgz#8471e037b8e4762f5a464686e19e5afc708502e4"
-  integrity sha1-hHHgN7jkdi9aRkaG4Z5a/HCFAuQ=
 
 vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.3.0:
   version "7.3.0"
