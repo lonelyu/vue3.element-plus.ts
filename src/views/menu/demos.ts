@@ -5,6 +5,14 @@ export default [
     name: 'demos-index',
   },
   {
+    icon: 'el-icon-menu',
+    label: 'webSocket对话',
+    children: [{
+      label: '对话',
+      name: 'demos-socket-chat',
+    }]
+  },
+  {
     label: 'mysql操作演示',
     icon: 'el-icon-menu',
     children: [

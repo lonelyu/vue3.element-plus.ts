@@ -30,13 +30,13 @@
           <template v-for="(item1, index1) in menuList" :key="index1">
             <el-menu-item
               v-if="!item1.children"
-              :index="item1.name + index1"
+              :index="'' + index1"
               :route="{ name: item1.name }"
             >
               <i :class="item1.icon"></i>
               <template #title>{{ item1.label }}</template>
             </el-menu-item>
-            <el-submenu v-else index="activeIndex">
+            <el-submenu v-else :index="'' + index1">
               <template #title>
                 <i :class="item1.icon"></i>
                 <span>{{ item1.label }}</span>
@@ -45,7 +45,7 @@
                 <el-menu-item
                   v-for="(item2, index2) in item1.children"
                   :key="index2"
-                  :index="item2.name + index2"
+                  :index="'' + index1 + index2"
                   :route="{ name: item2.name, query: item2.query }"
                   >{{ item2.label }}</el-menu-item
                 >
@@ -71,7 +71,6 @@ export default defineComponent({
   data() {
     return {
       markdownList,
-      activeIndex: "1",
       activeHeader: "demos"
     };
   },

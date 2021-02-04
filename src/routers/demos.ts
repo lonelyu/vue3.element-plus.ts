@@ -5,10 +5,22 @@ export default [
     component: () => import("@/views/pages/demos/Index.vue"),
   },
   {
+    path: "/demos/socket",
+    redirect: '/demos/socket/chat',
+    component: () => import("@/components/router.vue"),
+    children: [
+      {
+        path: "chat",
+        name: "demos-socket-chat",
+        component: () => import("@/views/pages/demos/webSocket/chat.vue"),
+      }
+    ]
+  },
+  {
     path: "/demos/mysql",
     redirect: '/demos/mysql/add',
     component: () => import("@/components/router.vue"),
-    children:[
+    children: [
       {
         path: "add",
         name: "demos-mysql-add",

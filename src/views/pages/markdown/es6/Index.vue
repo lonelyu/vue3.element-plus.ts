@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-loading="loading" v-html="valHtml" id="content"></div>
+    <div v-loading="vData.loading" v-html="vData.valHtml" id="content"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch } from "vue";
-import { route } from "vue-router";
+import { defineComponent, reactive, nextTick, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import request from "@/request";
 
 import marked from "marked";
@@ -19,15 +19,17 @@ export default defineComponent({
       valHtml: "",
       loading: true
     });
-
-    const watchRouter = watch(route, {
-      handler(route) {
-        const fileId: string = route.query.fileId;
+    const route = useRoute();
+    const watchRouter = watch(
+      () => route.query,
+      () => {
+        const fileId: any = route.query.fileId;
+        console.log(fileId);
         if (fileId) {
           vData.loading = true;
           request.get(`/assets/books/es6/${fileId}.md`).then(response => {
             vData.valHtml = marked(response);
-            this.$nextTick(() => {
+            nextTick(() => {
               const nodes = document.querySelectorAll(
                 "#content pre code"
               ) as NodeListOf<HTMLElement>;
@@ -45,8 +47,10 @@ export default defineComponent({
           });
         }
       },
-      immediate: true
-    });
+      {
+        immediate: true
+      }
+    );
 
     return {
       watchRouter,
