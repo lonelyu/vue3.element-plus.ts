@@ -42,48 +42,46 @@ import { defineComponent, reactive, ref, nextTick, Ref } from "vue";
 import { ElNotification } from "element-plus";
 import ws from "@/socket";
 
-export default defineComponent({
-  setup() {
-    interface VData {
-      msgList: object[];
-    }
-    const vData = reactive({
-      msgList: []
-    }) as VData;
-    const sendForm = reactive({
-      content: "",
-      createdName: ""
-    });
-    const msgList: Ref = ref(null);
-    const ws1 = ws({
-      url: "/chat",
-      open: () => {
-        ElNotification({
-          title: "连接成功",
-          message: "socket",
-          type: "success"
-        });
-      },
-      message: data => {
-        const jsonData = JSON.parse(data);
-        vData.msgList = [...vData.msgList, ...jsonData];
-        nextTick(() => {
-          msgList.value.scrollTop = msgList.value.scrollHeight;
-        });
-      }
-    });
-
-    const onSubmit = () => {
-      ws1.send(JSON.stringify(sendForm));
-    };
-
-    return {
-      sendForm,
-      vData,
-      onSubmit,
-      msgList
-    };
+export default defineComponent(() => {
+  interface VData {
+    msgList: object[];
   }
+  const vData = reactive({
+    msgList: []
+  }) as VData;
+  const sendForm = reactive({
+    content: "",
+    createdName: ""
+  });
+  const msgList: Ref = ref(null);
+  const ws1 = ws({
+    url: "/chat",
+    open: () => {
+      ElNotification({
+        title: "连接成功",
+        message: "socket",
+        type: "success"
+      });
+    },
+    message: data => {
+      const jsonData = JSON.parse(data);
+      vData.msgList = [...vData.msgList, ...jsonData];
+      nextTick(() => {
+        msgList.value.scrollTop = msgList.value.scrollHeight;
+      });
+    }
+  });
+
+  const onSubmit = () => {
+    ws1.send(JSON.stringify(sendForm));
+  };
+
+  return {
+    sendForm,
+    vData,
+    onSubmit,
+    msgList
+  };
 });
 </script>
 
